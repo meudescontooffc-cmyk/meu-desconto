@@ -1,47 +1,150 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Meu Desconto</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
+
 <header>
-  <h1>Meu Desconto</h1>
-  <input type="text" id="searchInput" placeholder="Buscar loja..." onkeyup="searchLojas()">
+
+<h1>Meu Desconto</h1>
+
+<input 
+type="text"
+id="searchInput"
+placeholder="Buscar loja..."
+onkeyup="searchLojas()"
+>
+
 </header>
 
+
+
 <div class="categories">
-  <button class="active" onclick="filterCategory('all')">Todos</button>
-  <button onclick="filterCategory('farmacia')">Farmácia</button>
-  <button onclick="filterCategory('mercado')">Mercado</button>
-  <button onclick="filterCategory('restaurante')">Restaurante</button>
-  <button onclick="filterCategory('academia')">Academia</button>
-  <button onclick="filterCategory('salao')">Salão</button>
+
+<button class="active" onclick="filterCategory('all')">Todos</button>
+
+<button onclick="filterCategory('farmacia')">Farmácia</button>
+
+<button onclick="filterCategory('mercado')">Mercado</button>
+
+<button onclick="filterCategory('decoração')">Decoração</button>
+
+<button onclick="filterCategory('tecnologia')">Tecnologia</button>
+
+<button onclick="filterCategory('moda')">Moda</button>
+
 </div>
+
+
 
 <div id="map"></div>
 
+
+
 <div id="lojasContainer"></div>
 
+
+
+<!-- MODAL DA LOJA -->
+
 <div id="lojaModal" class="modal">
-  <span class="closeBtn" onclick="closeModal()">← Voltar</span>
-  <h2 id="modalNome"></h2>
-  <p id="modalDesconto"></p>
-  <p id="modalCondicoes"></p>
-  <img id="modalImagem" src="">
-  <button id="rotaBtn" class="rotaBtn">📍 Como chegar</button>
-  <button onclick="cancelarRota()" class="cancelBtn">❌ Cancelar rota</button>
+
+<span class="closeBtn" onclick="closeModal()">← Voltar</span>
+
+<h2 id="modalNome" class="nomeLoja"></h2>
+
+<p id="modalDesconto" class="desconto"></p>
+
+<p id="modalCondicoes" class="condicoes"></p>
+
+
+
+<!-- GALERIA DE FOTOS -->
+
+<div id="modalGaleria" class="galeria"></div>
+
+
+
+<!-- DESCRIÇÃO DA LOJA -->
+
+<p id="modalDescricao" class="descricaoLoja"></p>
+
+
+
+<div class="botoesModal">
+
+<button id="rotaBtn" class="rotaBtn">
+📍 Como chegar
+</button>
+
+<button onclick="cancelarRota()" class="cancelBtn">
+❌ Cancelar rota
+</button>
+
 </div>
+
+</div>
+
+
+
+<!-- VISUALIZADOR DE IMAGEM TELA CHEIA -->
+
+<div id="imageViewer" class="imageViewer">
+
+<div class="viewerHeader">
+
+<button onclick="fecharGaleria()" class="voltarViewer">
+← Voltar
+</button>
+
+</div>
+
+
+
+<div class="viewerContainer">
+
+<button class="nav prev" onclick="mudarImagem(-1)">
+❮
+</button>
+
+
+<img id="viewerImg">
+
+
+<button class="nav next" onclick="mudarImagem(1)">
+❯
+</button>
+
+</div>
+
+
+
+<div id="viewerDots" class="viewerDots"></div>
+
+</div>
+
+
 
 <script src="script.js"></script>
 
-<script async defer
+
+<script
+async
+defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3aC2c04istc1__3ER-XZr5dOLpaezVQQ&callback=initMap">
 </script>
+
 
 </body>
 </html>
