@@ -59,7 +59,7 @@ lat:-3.399528,
 lng:-44.356014,
 desconto:"10% a 20% de Desconto",
 condicoes:"Valor Minimo R$ 30,00",
-descricao:"Loja de decoração e artigos para festas.",
+descricao:"Loja com artigos de festas e itens decorativos para diversas ocasiões.",
 categoria:"decoração",
 imagens:[
 "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/Festa%20e%20decora%C3%A7%C3%A3o%2Ffesta1.webp?alt=media&token=374c5b39-c14a-4d07-9ade-f38dc487c8e7",
