@@ -61,10 +61,22 @@ Moda
 
 </div>
 
-<!-- MAPA -->
+<!-- BOTÃO VER MAPA -->
 
-<div class="mapContainer">
+<div class="mapButtonContainer">
+
+<button id="toggleMapBtn" onclick="toggleMapa()">
+🗺️ Ver mapa
+</button>
+
+</div>
+
+<!-- MAPA (COMEÇA OCULTO) -->
+
+<div class="mapContainer" id="mapContainer" style="display:none;">
+
 <div id="map"></div>
+
 </div>
 
 <!-- LISTA DE LOJAS -->
@@ -91,8 +103,6 @@ Moda
 
 <button id="rotaBtn" class="rotaBtn">
 📍 Como chegar
-</button>
-
 <button onclick="cancelarRota()" class="cancelBtn">
 ❌ Cancelar rota
 </button>
