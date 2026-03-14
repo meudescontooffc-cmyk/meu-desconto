@@ -10,6 +10,8 @@ let imagemAtual = 0;
 let imagensGaleria = [];
 let startX = 0;
 
+let mapaVisivel = false;
+
 let lojas = [
 {
 nome:"Farmácia Abreu",
@@ -69,6 +71,81 @@ imagens:[
 }
 ];
 
+/* EMBARALHAR LOJAS */
+function embaralharLojas(array){
+for(let i=array.length-1;i>0;i--){
+const j=Math.floor(Math.random()*(i+1));
+[array[i],array[j]]=[array[j],array[i]];
+}
+}
+
+/* MOSTRAR / ESCONDER MAPA */
+function toggleMapa(){
+
+const container = document.getElementById("mapContainer");
+const botao = document.getElementById("toggleMapBtn");
+
+mapaVisivel = !mapaVisivel;
+
+if(mapaVisivel){
+
+container.style.display = "block";
+botao.innerText = "❌ Fechar mapa";
+
+setTimeout(()=>{
+google.maps.event.trigger(map,"resize");
+map.setCenter({lat:-3.398823,lng:-44.356215});
+},300);
+
+}else{
+
+container.style.display = "none";
+botao.innerText = "🗺️ Ver mapa";
+
+}
+
+}
+
+function initMap(){
+
+embaralharLojas(lojas);
+
+const centro={lat:-3.398823,lng:-44.356215};
+
+map=new google.maps.Map(document.getElementById("map"),{
+center:centro,
+zoom:14,
+disableDefaultUI:true,
+gestureHandling:"cooperative",
+clickableIcons:false,
+styles:[
+{featureType:"poi",stylers:[{visibility:"off"}]},
+{featureType:"transit",stylers:[{visibility:"off"}]}
+]
+});
+
+directionsService=new google.maps.DirectionsService();
+
+directionsRenderer=new google.maps.DirectionsRenderer({
+polylineOptions:{
+strokeColor:"#d4af37",
+strokeWeight:6
+}
+});
+
+directionsRenderer.setMap(map);
+
+map.addListener("zoom_changed",controlarZoom);
+
+pegarLocalizacao();
+renderMarkers(lojas);
+renderLojas(lojas);
+
+document.getElementById("map").style.display="none";
+
+}
+
+/* RESTO DO CÓDIGO CONTINUA IGUAL */
 function initMap(){
 
 const centro={lat:-3.398823,lng:-44.356215};
@@ -270,7 +347,30 @@ container.appendChild(div);
 });
 
 }
+<!--ocutar lista de empresa-->
+function toggleMapa(){
 
+const mapa = document.getElementById("mapContainer");
+const lista = document.getElementById("lojasContainer");
+const botao = document.getElementById("toggleMapBtn");
+
+if(mapa.style.display === "none"){
+
+mapa.style.display = "block";
+lista.style.display = "none";
+
+botao.innerText = "⬇️ Fechar mapa";
+
+}else{
+
+mapa.style.display = "none";
+lista.style.display = "block";
+
+botao.innerText = "🗺️ Ver mapa";
+
+}
+
+}
 function openModal(loja){
 
 document.getElementById("modalNome").innerText=loja.nome;
@@ -307,6 +407,8 @@ document.getElementById("lojaModal").classList.remove("show");
 }
 
 function calcularRota(destLat,destLng){
+  document.getElementById("mapContainer").style.display = "block";
+document.getElementById("lojasContainer").style.display = "none";
 
 if(!userMarker){
 alert("Ative sua localização.");
