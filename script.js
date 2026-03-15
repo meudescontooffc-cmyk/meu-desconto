@@ -154,7 +154,7 @@ map=new google.maps.Map(document.getElementById("map"),{
 center:centro,
 zoom:14,
 disableDefaultUI:true,
-gestureHandling:"cooperative",
+gestureHandling:"greedy",
 clickableIcons:false,
 styles:[
 {featureType:"poi",stylers:[{visibility:"off"}]},
@@ -233,19 +233,13 @@ lista.forEach(loja=>{
 const marker=new google.maps.Marker({
 position:{lat:loja.lat,lng:loja.lng},
 map:map,
-title:loja.nome,
 icon:{
 url:iconBase+iconMap[loja.categoria],
 scaledSize:getIconSize()
 }
 });
 
-const infoWindow=new google.maps.InfoWindow({
-content:`<div style="padding:10px"><b>${loja.nome}</b><br>${loja.desconto}</div>`
-});
-
 marker.addListener("click",()=>{
-infoWindow.open(map,marker);
 openModal(loja);
 });
 
