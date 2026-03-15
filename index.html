@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meu Desconto</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- OTIMIZAÇÃO MAPA -->
+<link rel="preconnect" href="https://maps.googleapis.com">
+<link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+
+<h1>Meu Desconto</h1>
+
+<input
+type="text"
+id="searchInput"
+placeholder="Buscar loja..."
+onkeyup="searchLojas()"
+>
+
+</header>
+
+<!-- CATEGORIAS -->
+
+<div class="categories">
+
+<button class="active" onclick="filterCategory('all',this)">Todos</button>
+
+<button onclick="filterCategory('farmacia',this)">
+Farmácia
+</button>
+
+<button onclick="filterCategory('mercado',this)">
+Mercado
+</button>
+
+<button onclick="filterCategory('decoração',this)">
+Decoração
+</button>
+
+<button onclick="filterCategory('tecnologia',this)">
+Tecnologia
+</button>
+
+<button onclick="filterCategory('moda',this)">
+Moda
+</button>
+
+</div>
+
+<!-- BOTÃO VER MAPA -->
+
+<div class="mapButtonContainer">
+
+<button id="toggleMapBtn" onclick="toggleMapa()">
+🗺️ Ver mapa
+</button>
+
+</div>
+
+<!-- MAPA (COMEÇA OCULTO) -->
+
+<div class="mapContainer" id="mapContainer" style="display:none;">
+
+<div id="map"></div>
+
+</div>
+<div id="cancelarRotaContainer" style="display:none;text-align:center;margin:10px 0;">
+
+<button id="cancelarRotaBtn" class="rotaCancelBtn">
+❌ Cancelar rota
+</button>
+
+</div>
+<!-- LISTA DE LOJAS -->
+
+<div id="lojasContainer"></div>
+
+<!-- MODAL LOJA -->
+
+<div id="lojaModal" class="modal">
+
+<span class="closeBtn" onclick="closeModal()">← Voltar</span>
+
+<h2 id="modalNome" class="nomeLoja"></h2>
+
+<p id="modalDesconto" class="desconto"></p>
+
+<p id="modalCondicoes" class="condicoes"></p>
+
+<div id="modalGaleria" class="galeria"></div>
+
+<p id="modalDescricao" class="descricaoLoja"></p>
+
+<div class="botoesModal">
+
+<button id="rotaBtn" class="rotaBtn">
+📍 Como chegar
+<button onclick="cancelarRota()" class="cancelBtn">
+❌ Cancelar rota
+</button>
+
+</div>
+
+</div>
+
+<!-- VISUALIZADOR DE IMAGEM -->
+
+<div id="imageViewer" class="imageViewer">
+
+<div class="viewerHeader">
+
+<button onclick="fecharGaleria()" class="voltarViewer">
+← Voltar
+</button>
+
+</div>
+
+<div class="viewerContainer">
+
+<button class="nav prev" onclick="mudarImagem(-1)">❮</button>
+
+<img id="viewerImg" loading="lazy">
+
+<button class="nav next" onclick="mudarImagem(1)">❯</button>
+
+</div>
+
+<div id="viewerDots" class="viewerDots"></div>
+
+</div>
+
+</div>
+
+<!-- JS PRINCIPAL -->
+
+<script src="script.js" defer></script>
+
+<!-- GOOGLE MAPS -->
+
+<script
+async
+defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3aC2c04istc1__3ER-XZr5dOLpaezVQQ&callback=initMap">
+</script>
+
+</body>
+
+</html>
