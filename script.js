@@ -361,7 +361,7 @@ mapa.style.display = "none";
 lista.style.display = "block";
 
 botao.innerText = "🗺️ Ver mapa";
-
+document.getElementById("cancelarRotaContainer").style.display = "none";
 }
 
 }
