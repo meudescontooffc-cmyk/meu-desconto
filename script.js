@@ -209,12 +209,76 @@ imagens:[
 "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/modas%2Flm%20moda%20masculina%2FWhatsApp%20Image%202026-07-07%20at%2012.30.36.jpeg?alt=media&token=6beec362-f4f0-4361-9869-4ba30020a310",
 "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/modas%2Flm%20moda%20masculina%2FWhatsApp%20Image%202026-07-07%20at%2012.30.37%20(1).jpeg?alt=media&token=79534f30-2ced-419d-bbd1-cbdef5ba223c",
 "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/modas%2Flm%20moda%20masculina%2FWhatsApp%20Image%202026-07-07%20at%2012.30.37.jpeg?alt=media&token=d2670776-9536-4f50-9f80-d2bcffcb4c67",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/modas%2Flm%20moda%20masculina%2FWhatsApp%20Image%202026-07-08%20at%2012.45.22.jpeg?alt=media&token=3a9a2472-dab6-4f34-aac1-534436b558a1",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/modas%2Flm%20moda%20masculina%2FWhatsApp%20Image%202026-07-08%20at%2012.45.22%20(1).jpeg?alt=media&token=70a69947-63de-47ee-883a-df4f39764045",
+
+
+]
+},
+
+{
+nome:"Ótica Carolli",
+lat:-3.3949158,
+lng:-44.3579147,
+desconto:"30% de Desconto",
+condicoes:"• 25% de Desconto em pagamentos parcelados",
+descricao:"Ótica especializada em óculos de grau, óculos de sol e acessórios, com qualidade e variedade.",
+categoria:"ótica",
+imagens:[
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Fotica%20caroli%2FWhatsApp%20Image%202026-07-08%20at%2013.09.54.jpeg?alt=media&token=e8f3825b-99a1-437d-8e45-36952335df44",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Fotica%20caroli%2FWhatsApp%20Image%202026-07-08%20at%2013.09.55%20(1).jpeg?alt=media&token=aabf0856-3cd4-4bb4-a97d-ff1302c73e3a",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Fotica%20caroli%2FWhatsApp%20Image%202026-07-08%20at%2013.09.55%20(2).jpeg?alt=media&token=9ed3ecd9-3034-4779-9e7b-c16f03582bb9",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Fotica%20caroli%2FWhatsApp%20Image%202026-07-08%20at%2013.09.55%20(3).jpeg?alt=media&token=36801a20-ae59-4488-a059-a69daf798ba9",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Fotica%20caroli%2FWhatsApp%20Image%202026-07-08%20at%2013.09.55.jpeg?alt=media&token=d0787431-b9e1-49c4-a22c-0bf6255de28d",
 
 
 
 
 ]
 },
+
+{
+nome:"Ótica Popular",
+lat:-3.3967261,
+lng:-44.3560180,
+desconto:"30% de Desconto",
+condicoes:"• 25% de Desconto em pagamentos parcelados",
+descricao:"Ótica especializada em óculos de grau, óculos de sol e acessórios, com qualidade e variedade.",
+categoria:"ótica",
+imagens:[
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Fotica%20popular%2FWhatsApp%20Image%202026-07-08%20at%2016.48.17.jpeg?alt=media&token=d9971b5c-2750-496a-a1c7-ba9bc938b758",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Fotica%20popular%2FWhatsApp%20Image%202026-07-08%20at%2016.45.02.jpeg?alt=media&token=11b21c0a-3aa2-48a5-b7e5-638374e03357",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Fotica%20popular%2FWhatsApp%20Image%202026-07-08%20at%2016.45.02%20(2).jpeg?alt=media&token=db81a1d5-20f8-4dfb-a9b5-d1d6294f9557",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Fotica%20popular%2FWhatsApp%20Image%202026-07-08%20at%2016.45.02%20(1).jpeg?alt=media&token=c72c7085-29d9-4b4f-a6a5-ee6f6764cd54",
+
+
+
+
+
+]
+},
+
+{
+nome:"Carlos Celulares",
+lat:-3.3942555,
+lng:-44.3596233,
+desconto:"10% a 20% de Desconto",
+condicoes:"• Descontos variam conforme o produto ou seviço",
+descricao:"Loja especializada em assistência técnica para celulares e acessórios para diversos modelos.",
+categoria:"tecnologia",
+imagens:[
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/tegnologia%2Fcarlos%20celulares%2FWhatsApp%20Image%202026-07-08%20at%2017.00.26.jpeg?alt=media&token=c426e543-d0ef-4f52-b47f-98df23c86605",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/tegnologia%2Fcarlos%20celulares%2FWhatsApp%20Image%202026-07-08%20at%2017.00.27%20(1).jpeg?alt=media&token=7e860798-77ae-414f-a249-7577cbc24cf3",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/tegnologia%2Fcarlos%20celulares%2FWhatsApp%20Image%202026-07-08%20at%2017.00.27%20(2).jpeg?alt=media&token=0bafbb91-87fd-4764-8f76-a36b41bb96d3",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/tegnologia%2Fcarlos%20celulares%2FWhatsApp%20Image%202026-07-08%20at%2017.00.27.jpeg?alt=media&token=ea8e3acb-9842-441b-93bd-0fc0fb63ecbf",
+
+
+
+
+
+]
+},
+
 
 
 
@@ -314,7 +378,7 @@ tecnologia:"yellow-dot.png",
 moda:"purple-dot.png",
 beleza:"orange-dot.png",
 construção:"pink-dot.png",
-
+ótica:"ltblue-dot.png",
 
 };
 
