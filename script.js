@@ -307,8 +307,23 @@ disableDefaultUI:true,
 gestureHandling:"greedy",
 clickableIcons:false,
 styles:[
-{featureType:"poi",stylers:[{visibility:"off"}]},
-{featureType:"transit",stylers:[{visibility:"off"}]}
+  {elementType:"geometry",stylers:[{color:"#0d0d0d"}]},
+  {elementType:"labels.text.fill",stylers:[{color:"#d4af37"}]},
+  {elementType:"labels.text.stroke",stylers:[{color:"#0d0d0d"}]},
+  {featureType:"administrative",elementType:"geometry",stylers:[{visibility:"off"}]},
+  {featureType:"administrative.country",elementType:"labels.text.fill",stylers:[{color:"#9e9e9e"}]},
+  {featureType:"administrative.locality",elementType:"labels.text.fill",stylers:[{color:"#d4af37"}]},
+  {featureType:"road",elementType:"geometry",stylers:[{color:"#1e1e1e"}]},
+  {featureType:"road",elementType:"geometry.stroke",stylers:[{color:"#2a2a2a"}]},
+  {featureType:"road",elementType:"labels.text.fill",stylers:[{color:"#aaa"}]},
+  {featureType:"road.highway",elementType:"geometry",stylers:[{color:"#2c2c2c"}]},
+  {featureType:"road.highway",elementType:"geometry.stroke",stylers:[{color:"#333"}]},
+  {featureType:"road.highway",elementType:"labels.text.fill",stylers:[{color:"#d4af37"}]},
+  {featureType:"water",elementType:"geometry",stylers:[{color:"#0e1626"}]},
+  {featureType:"water",elementType:"labels.text.fill",stylers:[{color:"#4e6d70"}]},
+  {featureType:"poi",stylers:[{visibility:"off"}]},
+  {featureType:"transit",stylers:[{visibility:"off"}]},
+  {featureType:"landscape",elementType:"geometry",stylers:[{color:"#111111"}]}
 ]
 });
 
@@ -365,45 +380,135 @@ map.setCenter(local);
 
 function renderMarkers(lista){
 
-markers.forEach(m=>m.setMap(null));
-markers=[];
+  markers.forEach(m => m.setMap(null));
+  markers = [];
 
-const iconBase="https://maps.google.com/mapfiles/ms/icons/";
+  // Cor por categoria
+  const coresCat = {
+    farmacia:     { bg1:"#4ade80", bg2:"#16a34a", borda:"#14532d" },
+    tecnologia:   { bg1:"#60a5fa", bg2:"#2563eb", borda:"#1e3a8a" },
+    moda:         { bg1:"#f472b6", bg2:"#db2777", borda:"#831843" },
+    beleza:       { bg1:"#fb923c", bg2:"#ea580c", borda:"#7c2d12" },
+    construção:   { bg1:"#a78bfa", bg2:"#7c3aed", borda:"#4c1d95" },
+    agropecuaria: { bg1:"#86efac", bg2:"#15803d", borda:"#14532d" },
+    gráfica:      { bg1:"#f87171", bg2:"#dc2626", borda:"#7f1d1d" },
+    ótica:        { bg1:"#38bdf8", bg2:"#0284c7", borda:"#0c4a6e" },
+  };
 
-const iconMap={
-farmacia:"green-dot.png",
-agropecuaria:"blue-dot.png",
-gráfica:"red-dot.png",
-tecnologia:"yellow-dot.png",
-moda:"purple-dot.png",
-beleza:"orange-dot.png",
-construção:"pink-dot.png",
-ótica:"ltblue-dot.png",
+  const padrao = { bg1:"#fde68a", bg2:"#b8860b", borda:"#7a5800" };
 
-};
+  function gerarSVG(categoria){
+    const c = coresCat[categoria] || padrao;
 
+    const simbolos = {
+      farmacia: `
+        <rect x="13" y="9"  width="10" height="3" rx="1.5" fill="#fff"/>
+        <rect x="13" y="17" width="10" height="3" rx="1.5" fill="#fff"/>
+        <rect x="9"  y="13" width="18" height="3" rx="1.5" fill="#fff"/>`,
 
-lista.forEach(loja=>{
+      tecnologia: `
+        <rect x="12" y="8" width="12" height="18" rx="2.5" fill="none" stroke="#fff" stroke-width="2"/>
+        <circle cx="18" cy="23" r="1.2" fill="#fff"/>
+        <rect x="15" y="11" width="6" height="1.5" rx="0.75" fill="#fff"/>`,
 
-const marker=new google.maps.Marker({
-position:{lat:loja.lat,lng:loja.lng},
-map:map,
-icon:{
-url:iconBase+iconMap[loja.categoria],
-scaledSize:getIconSize()
-}
-});
+      moda: `
+        <circle cx="18" cy="9" r="1.5" fill="none" stroke="#fff" stroke-width="1.6"/>
+        <line x1="18" y1="10.5" x2="18" y2="13" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M10 23 L14 14 Q18 12 22 14 L26 23 Q22 20 18 21 Q14 20 10 23Z"
+              fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>`,
 
-marker.addListener("click",()=>{
-openModal(loja);
-});
+      beleza: `
+        <circle cx="14" cy="11" r="2.5" fill="none" stroke="#fff" stroke-width="1.8"/>
+        <circle cx="22" cy="11" r="2.5" fill="none" stroke="#fff" stroke-width="1.8"/>
+        <line x1="14" y1="13.5" x2="22" y2="24" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="22" y1="13.5" x2="14" y2="24" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>`,
 
-markers.push(marker);
+      construção: `
+        <polygon points="18,8 27,16 9,16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+        <rect x="13" y="16" width="10" height="9" rx="1" fill="none" stroke="#fff" stroke-width="1.8"/>
+        <rect x="16" y="20" width="4" height="5" rx="0.5" fill="#fff"/>`,
 
-});
+      agropecuaria: `
+        <path d="M18 24 L18 12" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M18 18 C18 18 12 14 10 9 C14 10 18 14 18 18Z" fill="#fff"/>
+        <path d="M18 15 C18 15 24 11 26 6 C22 7 18 11 18 15Z" fill="#fff"/>`,
 
-controlarZoom();
+      gráfica: `
+        <rect x="11" y="8"  width="14" height="10" rx="1.5" fill="none" stroke="#fff" stroke-width="1.8"/>
+        <rect x="13" y="18" width="10" height="7"  rx="1"   fill="none" stroke="#fff" stroke-width="1.8"/>
+        <line x1="14" y1="21" x2="22" y2="21" stroke="#fff" stroke-width="1.5"/>
+        <line x1="14" y1="23" x2="20" y2="23" stroke="#fff" stroke-width="1.5"/>`,
 
+      ótica: `
+        <circle cx="13" cy="17" r="4.5" fill="none" stroke="#fff" stroke-width="1.8"/>
+        <circle cx="23" cy="17" r="4.5" fill="none" stroke="#fff" stroke-width="1.8"/>
+        <line x1="17.5" y1="17" x2="18.5" y2="17" stroke="#fff" stroke-width="1.8"/>
+        <line x1="8.5"  y1="14" x2="8"    y2="12" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="27.5" y1="14" x2="28"   y2="12" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>`,
+    };
+
+    const icone = simbolos[categoria] || `
+      <circle cx="18" cy="17" r="5" fill="none" stroke="#fff" stroke-width="2"/>
+      <circle cx="18" cy="17" r="2" fill="#fff"/>`;
+
+    
+    // Usar viewBox maior com espaço transparente ao redor do pin
+    // para que o SVG não corte tiles do mapa. O pin em si fica
+    // no centro do viewBox e a área transparente ao redor garante
+    // que as ruas vizinhas renderizem sem artefatos. 
+    return `<svg xmlns="http://www.w3.org/2000/svg"
+      width="72" height="88" viewBox="-18 -22 72 88">
+      <defs>
+        <radialGradient id="bg_${categoria}" cx="38%" cy="28%">
+          <stop offset="0%"   stop-color="${c.bg1}"/>
+          <stop offset="100%" stop-color="${c.bg2}"/>
+        </radialGradient>
+        <filter id="sombra" x="-30%" y="-20%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="2" stdDeviation="2.5"
+            flood-color="rgba(0,0,0,0.55)"/>
+        </filter>
+      </defs>
+      <!-- Pin com sombra -->
+      <g filter="url(#sombra)">
+        <path d="M18 0C8 0 0 8 0 18c0 12 18 26 18 26S36 30 36 18C36 8 28 0 18 0z"
+          fill="url(#bg_${categoria})" stroke="${c.borda}" stroke-width="1.2"/>
+      </g>
+      <!-- Círculo branco translúcido interno -->
+      <circle cx="18" cy="16" r="13" fill="rgba(255,255,255,0.12)"/>
+      <!-- Ícone da categoria -->
+      ${icone}
+    </svg>`;
+  }
+
+  function svgParaUrl(svg){
+    return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg.trim());
+  }
+
+  lista.forEach(loja => {
+    const svg = gerarSVG(loja.categoria);
+
+    const marker = new google.maps.Marker({
+      position: { lat: loja.lat, lng: loja.lng },
+      map: map,
+      icon: {
+        url: svgParaUrl(svg),
+        // ✅ scaledSize menor que o viewBox — o espaço transparente extra
+        // fica fora da área clicável mas impede o bug de corte de tiles
+        scaledSize: new google.maps.Size(36, 44),
+        // ancora exatamente na ponta do pin (metade da largura, altura total)
+        anchor: new google.maps.Point(18, 44),
+        // Área clicável apenas no pin, não na sombra
+        origin: new google.maps.Point(0, 0)
+      },
+      title: loja.nome,
+      optimized: false  // ✅ ESSENCIAL: desativa canvas agrupado que causa bug de tiles
+    });
+
+    marker.addListener("click", () => { openModal(loja); });
+    markers.push(marker);
+  });
+
+  controlarZoom();
 }
 
 function getIconSize(){
@@ -495,35 +600,44 @@ container.appendChild(div);
 }
 /* MOSTRAR / OCULTAR MAPA */
 function toggleMapa(){
+  const mapa  = document.getElementById("mapContainer");
+  const lista = document.getElementById("lojasContainer");
+  const botao = document.getElementById("toggleMapBtn");
 
-const mapa = document.getElementById("mapContainer");
-const lista = document.getElementById("lojasContainer");
-const botao = document.getElementById("toggleMapBtn");
+  // mapaVisivel = true quando ESTÁ visível (precisamos FECHAR)
+  mapaVisivel = mapa.style.display !== "none";
 
-mapaVisivel = mapa.style.display === "none";
-
-if(mapaVisivel){
-
-mapa.style.display = "block";
-lista.style.display = "none";
-
-botao.innerText = "Fechar mapa";
-
-setTimeout(()=>{
-google.maps.event.trigger(map,"resize");
-map.setCenter({lat:-3.398823,lng:-44.356215});
-},300);
-
-}else{
-
-mapa.style.display = "none";
-lista.style.display = "block";
-
-botao.innerText = "Ver mapa";
-document.getElementById("cancelarRotaContainer").style.display = "none";
-
-}
-
+  if(!mapaVisivel){
+    // Abrir mapa
+    mapa.style.display  = "block";
+    lista.style.display = "none";
+    document.getElementById("cancelarRotaContainer").style.display = "none";
+    botao.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg> Fechar mapa`;
+    setTimeout(()=>{
+      google.maps.event.trigger(map,"resize");
+      if(userMarker){
+        map.setCenter(userMarker.getPosition());
+      } else {
+        map.setCenter({lat:-3.398823,lng:-44.356215});
+      }
+    },200);
+  } else {
+    // Fechar mapa
+    mapa.style.display  = "none";
+    lista.style.display = "block";
+    document.getElementById("cancelarRotaContainer").style.display = "none";
+    // Limpar rota ao fechar mapa
+    if(rotaAtiva){
+      directionsRenderer.setDirections({routes:[]});
+      rotaAtiva = false;
+      renderMarkers(lojas);
+    }
+    botao.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <path d="M9 3L3 7v14l6-4 6 4 6-4V3l-6 4-6-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg> Ver mapa`;
+  }
 }
 function openModal(loja){
 
@@ -562,51 +676,70 @@ document.getElementById("lojaModal").classList.remove("show");
 
 function calcularRota(destLat,destLng){
   closeModal();
-  document.getElementById("cancelarRotaContainer").style.display="block";
+
+  if(!userMarker){
+    alert("Ative sua localização para calcular a rota.");
+    return;
+  }
+
+  // Abrir mapa
   document.getElementById("mapContainer").style.display = "block";
-document.getElementById("lojasContainer").style.display = "none";
-document.getElementById("toggleMapBtn").innerText = "Fechar mapa";
-rotaAtiva = true;
+  document.getElementById("lojasContainer").style.display = "none";
+  document.getElementById("cancelarRotaContainer").style.display = "block";
+  document.getElementById("toggleMapBtn").innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+    <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+  </svg> Fechar mapa`;
+  rotaAtiva = true;
 
-if(!userMarker){
-alert("Ative sua localização.");
-return;
+  // Esconder marcadores durante a rota
+  markers.forEach(m => m.setMap(null));
+
+  // Botão cancelar rota
+  document.getElementById("cancelarRotaBtn").onclick = function(){
+    directionsRenderer.setDirections({routes:[]});
+    rotaAtiva = false;
+    document.getElementById("cancelarRotaContainer").style.display = "none";
+    // Voltar para lista
+    document.getElementById("mapContainer").style.display = "none";
+    document.getElementById("lojasContainer").style.display = "block";
+    document.getElementById("toggleMapBtn").innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <path d="M9 3L3 7v14l6-4 6 4 6-4V3l-6 4-6-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg> Ver mapa`;
+    renderMarkers(lojas);
+  };
+
+  setTimeout(()=>{ google.maps.event.trigger(map,"resize"); }, 200);
+
+  const request = {
+    origin: userMarker.getPosition(),
+    destination: {lat:destLat, lng:destLng},
+    travelMode: "DRIVING"
+  };
+
+  directionsService.route(request,(result,status)=>{
+    if(status === "OK"){
+      directionsRenderer.setDirections(result);
+      const distancia = result.routes[0].legs[0].distance.text;
+      const duracao   = result.routes[0].legs[0].duration.text;
+      // Toast em vez de alert
+      mostrarToast(`📍 ${distancia}  •  ⏱ ${duracao}`);
+    } else {
+      mostrarToast("Não foi possível calcular a rota.");
+    }
+  });
 }
 
-document.getElementById("cancelarRotaBtn").onclick = function(){
-
-directionsRenderer.setDirections({routes: []});
-
-rotaAtiva = false;
-
-document.getElementById("cancelarRotaContainer").style.display = "none";
-
-markers.forEach(m => m.setMap(map));
-
-};
-markers.forEach(m=>m.setMap(null));
-
-const request={
-origin:userMarker.getPosition(),
-destination:{lat:destLat,lng:destLng},
-travelMode:"DRIVING"
-};
-
-directionsService.route(request,(result,status)=>{
-
-if(status==="OK"){
-
-directionsRenderer.setDirections(result);
-
-const distancia=result.routes[0].legs[0].distance.text;
-const duracao=result.routes[0].legs[0].duration.text;
-
-alert(`Distância: ${distancia}\n⏱ Tempo estimado: ${duracao}`);
-
-}
-
-});
-
+function mostrarToast(msg){
+  let t = document.getElementById("routeToast");
+  if(!t){
+    t = document.createElement("div");
+    t.id = "routeToast";
+    t.style.cssText = "position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#d4af37;border:1px solid #d4af37;border-radius:30px;padding:10px 22px;font-size:14px;font-weight:600;z-index:9999;box-shadow:0 4px 18px rgba(0,0,0,.5);opacity:0;transition:opacity .3s;";
+    document.body.appendChild(t);
+  }
+  t.innerText = msg;
+  t.style.opacity = "1";
+  setTimeout(()=>{ t.style.opacity = "0"; }, 4000);
 }
 
 function cancelarRota(){
