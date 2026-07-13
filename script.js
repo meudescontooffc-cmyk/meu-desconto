@@ -307,23 +307,8 @@ disableDefaultUI:true,
 gestureHandling:"greedy",
 clickableIcons:false,
 styles:[
-  {elementType:"geometry",stylers:[{color:"#0d0d0d"}]},
-  {elementType:"labels.text.fill",stylers:[{color:"#d4af37"}]},
-  {elementType:"labels.text.stroke",stylers:[{color:"#0d0d0d"}]},
-  {featureType:"administrative",elementType:"geometry",stylers:[{visibility:"off"}]},
-  {featureType:"administrative.country",elementType:"labels.text.fill",stylers:[{color:"#9e9e9e"}]},
-  {featureType:"administrative.locality",elementType:"labels.text.fill",stylers:[{color:"#d4af37"}]},
-  {featureType:"road",elementType:"geometry",stylers:[{color:"#1e1e1e"}]},
-  {featureType:"road",elementType:"geometry.stroke",stylers:[{color:"#2a2a2a"}]},
-  {featureType:"road",elementType:"labels.text.fill",stylers:[{color:"#aaa"}]},
-  {featureType:"road.highway",elementType:"geometry",stylers:[{color:"#2c2c2c"}]},
-  {featureType:"road.highway",elementType:"geometry.stroke",stylers:[{color:"#333"}]},
-  {featureType:"road.highway",elementType:"labels.text.fill",stylers:[{color:"#d4af37"}]},
-  {featureType:"water",elementType:"geometry",stylers:[{color:"#0e1626"}]},
-  {featureType:"water",elementType:"labels.text.fill",stylers:[{color:"#4e6d70"}]},
   {featureType:"poi",stylers:[{visibility:"off"}]},
-  {featureType:"transit",stylers:[{visibility:"off"}]},
-  {featureType:"landscape",elementType:"geometry",stylers:[{color:"#111111"}]}
+  {featureType:"transit",stylers:[{visibility:"off"}]}
 ]
 });
 
@@ -343,6 +328,8 @@ map.addListener("zoom_changed",controlarZoom);
 pegarLocalizacao();
 renderMarkers(lojas);
 renderLojas(lojas);
+// Pré-carrega capas em background para abrir modal mais rápido
+setTimeout(()=>preCarregarCapas(lojas), 800);
 
 }
 
@@ -544,29 +531,56 @@ scaledSize:getIconSize()
 }
 
 /* IMAGEM BORRADA ATÉ CARREGAR */
+// Cache de imagens já baixadas
+const _imgCache = new Set();
+
 function criarImagemLazy(src){
+  const img = document.createElement("img");
+  img.loading  = "lazy";
+  img.decoding = "async";
+  img.style.cssText = "opacity:0;transition:opacity 0.3s ease;";
 
-const img=document.createElement("img");
+  function carregarImagem(){
+    if(_imgCache.has(src)){
+      img.src = src;
+      img.style.opacity = "1";
+      return;
+    }
+    const temp = new Image();
+    temp.onload = ()=>{
+      _imgCache.add(src);
+      img.src = src;
+      img.style.opacity = "1";
+    };
+    temp.onerror = ()=>{
+      img.src = "";
+      img.style.opacity = "1";
+    };
+    temp.src = src;
+  }
 
-img.loading="lazy";
-img.style.filter="blur(20px)";
-img.style.transition="filter 0.4s ease";
+  if("IntersectionObserver" in window){
+    const obs = new IntersectionObserver((entries, o)=>{
+      if(entries[0].isIntersecting){ carregarImagem(); o.disconnect(); }
+    }, {rootMargin:"300px"});
+    obs.observe(img);
+  } else {
+    carregarImagem();
+  }
 
-const temp=new Image();
-temp.src=src;
+  return img;
+}
 
-temp.onload=()=>{
-img.src=src;
-img.style.filter="blur(0)";
-};
-
-temp.onerror=()=>{
-img.src="https://via.placeholder.com/300x200?text=Imagem";
-img.style.filter="blur(0)";
-};
-
-return img;
-
+// Pré-carrega a primeira foto de todas as lojas em background
+function preCarregarCapas(lista){
+  lista.forEach(loja=>{
+    if(loja.imagens && loja.imagens[0] && !_imgCache.has(loja.imagens[0])){
+      const t = new Image();
+      t.onload  = ()=>_imgCache.add(loja.imagens[0]);
+      t.onerror = ()=>{};
+      t.src = loja.imagens[0];
+    }
+  });
 }
 
 function renderLojas(lista){
@@ -685,7 +699,6 @@ function calcularRota(destLat,destLng){
   // Abrir mapa
   document.getElementById("mapContainer").style.display = "block";
   document.getElementById("lojasContainer").style.display = "none";
-  document.getElementById("cancelarRotaContainer").style.display = "block";
   document.getElementById("toggleMapBtn").innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
     <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
   </svg> Fechar mapa`;
@@ -694,19 +707,18 @@ function calcularRota(destLat,destLng){
   // Esconder marcadores durante a rota
   markers.forEach(m => m.setMap(null));
 
-  // Botão cancelar rota
-  document.getElementById("cancelarRotaBtn").onclick = function(){
+  // Botão cancelar flutuante dentro do mapa
+  mostrarBotaoCancelarFlutuante(function(){
     directionsRenderer.setDirections({routes:[]});
     rotaAtiva = false;
-    document.getElementById("cancelarRotaContainer").style.display = "none";
-    // Voltar para lista
+    esconderBotaoCancelarFlutuante();
     document.getElementById("mapContainer").style.display = "none";
     document.getElementById("lojasContainer").style.display = "block";
     document.getElementById("toggleMapBtn").innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
       <path d="M9 3L3 7v14l6-4 6 4 6-4V3l-6 4-6-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
     </svg> Ver mapa`;
     renderMarkers(lojas);
-  };
+  });
 
   setTimeout(()=>{ google.maps.event.trigger(map,"resize"); }, 200);
 
@@ -742,12 +754,53 @@ function mostrarToast(msg){
   setTimeout(()=>{ t.style.opacity = "0"; }, 4000);
 }
 
+function mostrarBotaoCancelarFlutuante(onCancelar){
+  let btn = document.getElementById("floatCancelarBtn");
+  if(!btn){
+    btn = document.createElement("button");
+    btn.id = "floatCancelarBtn";
+    btn.style.cssText = [
+      "position:absolute",
+      "top:10px",
+      "left:50%",
+      "transform:translateX(-50%)",
+      "z-index:500",
+      "background:rgba(255,255,255,0.97)",
+      "color:#e53935",
+      "border:none",
+      "border-radius:20px",
+      "padding:8px 16px",
+      "font-size:12px",
+      "font-weight:700",
+      "cursor:pointer",
+      "display:inline-flex",
+      "align-items:center",
+      "gap:6px",
+      "box-shadow:0 2px 12px rgba(0,0,0,0.25)",
+      "letter-spacing:0.02em",
+      "white-space:nowrap",
+      "user-select:none"
+    ].join(";");
+    const mapContainer = document.getElementById("mapContainer");
+    mapContainer.style.position = "relative";
+    mapContainer.appendChild(btn);
+  }
+  btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+    <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </svg> Cancelar rota`;
+  btn.style.display = "inline-flex";
+  btn.onclick = onCancelar;
+}
+
+function esconderBotaoCancelarFlutuante(){
+  const btn = document.getElementById("floatCancelarBtn");
+  if(btn) btn.style.display = "none";
+}
+
 function cancelarRota(){
-
-directionsRenderer.setDirections({routes:[]});
-renderMarkers(lojas);
-closeModal();
-
+  directionsRenderer.setDirections({routes:[]});
+  renderMarkers(lojas);
+  closeModal();
 }
 
 function searchLojas(){

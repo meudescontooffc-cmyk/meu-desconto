@@ -764,3 +764,59 @@ a[title="Open this area in Google Maps"],
   padding: 12px 16px;
   background: #080808;
 }
+
+
+/* ============================================================
+   BOTÃO CANCELAR ROTA — FIXO NO TOPO
+   Aparece flutuando sobre o mapa, sempre visível
+============================================================ */
+#cancelarRotaContainer {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+}
+
+#cancelarRotaBtn {
+  background: rgba(10,10,10,0.92);
+  color: #d4af37;
+  border: 1.5px solid rgba(212,175,55,0.55);
+  border-radius: 30px;
+  padding: 11px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,175,55,0.1);
+  white-space: nowrap;
+}
+
+#cancelarRotaBtn:active {
+  transform: scale(0.96);
+  background: rgba(20,20,20,0.95);
+}
+
+/* ============================================================
+   OCULTAR BOTÕES E LOGOS PADRÃO DO GOOGLE MAPS
+============================================================ */
+.gm-style-cc,
+.gm-style a[href*="maps.google.com"],
+.gmnoprint,
+.gm-bundled-control,
+.gm-svpc,
+.gm-control-active,
+.gm-style-mtc,
+.gm-ui-hover-effect,
+a[title*="mapa"],
+a[title*="map"],
+a[title*="Maps"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
