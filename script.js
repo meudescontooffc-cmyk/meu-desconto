@@ -165,7 +165,7 @@ nome:"Shopping do Celular",
 lat:-3.3968352,
 lng:-44.3575881,
 desconto:"20% de Desconto",
-condicoes:"• Válido para todos os produtos da loja",
+condicoes:"• Válido para todos os produtos da loja. \n• Pagamentos à vista",
 descricao:"Loja de eletrônicos com variedade em celulares, acessórios e produtos de tecnologia.",
 categoria:"tecnologia",
 imagens:[
@@ -221,7 +221,7 @@ nome:"Ótica Carolli",
 lat:-3.3949158,
 lng:-44.3579147,
 desconto:"30% de Desconto",
-condicoes:"• 25% de Desconto em pagamentos parcelados",
+condicoes:"• Pagamentos à vista\n• 25% de Desconto em pagamentos parcelados",
 descricao:"Ótica especializada em óculos de grau, óculos de sol e acessórios, com qualidade e variedade.",
 categoria:"ótica",
 imagens:[
@@ -242,7 +242,7 @@ nome:"Ótica Popular",
 lat:-3.3967261,
 lng:-44.3560180,
 desconto:"30% de Desconto",
-condicoes:"• 25% de Desconto em pagamentos parcelados",
+condicoes:"• Pagamentos à vista\n• 25% de Desconto em pagamentos parcelados",
 descricao:"Ótica especializada em óculos de grau, óculos de sol e acessórios, com qualidade e variedade.",
 categoria:"ótica",
 imagens:[
@@ -263,7 +263,7 @@ nome:"Carlos Celulares",
 lat:-3.3942555,
 lng:-44.3596233,
 desconto:"10% a 20% de Desconto",
-condicoes:"• Descontos variam conforme o produto ou seviço",
+condicoes:"• Descontos variam conforme o produto ou seviço \n• Pagamentos à vista",
 descricao:"Loja especializada em assistência técnica para celulares e acessórios para diversos modelos.",
 categoria:"tecnologia",
 imagens:[
@@ -734,7 +734,7 @@ function calcularRota(destLat,destLng){
       const distancia = result.routes[0].legs[0].distance.text;
       const duracao   = result.routes[0].legs[0].duration.text;
       // Toast em vez de alert
-      mostrarToast(`📍 ${distancia}  •  ⏱ ${duracao}`);
+      mostrarToast(` ${distancia}  •  ⏱ ${duracao}`);
     } else {
       mostrarToast("Não foi possível calcular a rota.");
     }
@@ -766,7 +766,7 @@ function mostrarBotaoCancelarFlutuante(onCancelar){
       "transform:translateX(-50%)",
       "z-index:500",
       "background:rgba(255,255,255,0.97)",
-      "color:#e53935",
+      "color:#111111",
       "border:none",
       "border-radius:20px",
       "padding:8px 16px",
@@ -929,3 +929,5 @@ function toggleSec(id) {
     if (seta) seta.classList.add('secao-seta-aberta');
   }
 }
+
+
