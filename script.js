@@ -221,7 +221,7 @@ nome:"Ótica Carolli",
 lat:-3.3949158,
 lng:-44.3579147,
 desconto:"30% de Desconto",
-condicoes:"• Pagamentos à vista\n• 25% de Desconto em pagamentos parcelados",
+condicoes:"• Pagamentos à vista\n• 25% de Desconto em pagamentos parcelados • Descontos válidos para produtos.",
 descricao:"Ótica especializada em óculos de grau, óculos de sol e acessórios, com qualidade e variedade.",
 categoria:"ótica",
 imagens:[
@@ -242,7 +242,7 @@ nome:"Ótica Popular",
 lat:-3.3967261,
 lng:-44.3560180,
 desconto:"30% de Desconto",
-condicoes:"• Pagamentos à vista\n• 25% de Desconto em pagamentos parcelados",
+condicoes:"• Pagamentos à vista\n• 25% de Desconto em pagamentos parcelados • Descontos válidos para produtos.",
 descricao:"Ótica especializada em óculos de grau, óculos de sol e acessórios, com qualidade e variedade.",
 categoria:"ótica",
 imagens:[
@@ -275,6 +275,48 @@ imagens:[
 
 
 
+
+]
+},
+
+
+{
+nome:"Ótica do trabalhador",
+lat:-3.3938013,
+lng:-44.3605644,
+desconto:"30% de Desconto",
+condicoes:"• Pagamentos à vista\n• 25% de Desconto em pagamentos parcelados \n• Descontos válidos para produtos.",
+descricao:"Ótica especializada em óculos de grau, óculos de sol e acessórios, com qualidade e variedade.",
+categoria:"ótica",
+imagens:[
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Foticar%20do%20trabalhador%2FWhatsApp%20Image%202026-07-14%20at%2009.39.21.jpeg?alt=media&token=e427f178-8e52-472e-a79b-d71153593dc2",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Foticar%20do%20trabalhador%2FWhatsApp%20Image%202026-07-14%20at%2009.39.22%20(1).jpeg?alt=media&token=fa670b67-fbaf-4abc-8cea-72de9a0e7506",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Foticar%20do%20trabalhador%2FWhatsApp%20Image%202026-07-14%20at%2009.39.22%20(2).jpeg?alt=media&token=8c2b6fc7-7ff8-45c4-93e1-76f80d6b1a2a",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Foticar%20do%20trabalhador%2FWhatsApp%20Image%202026-07-14%20at%2009.39.22%20(3).jpeg?alt=media&token=85c167bd-c1de-4d04-aeec-34001e32591e",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oticas%2Foticar%20do%20trabalhador%2FWhatsApp%20Image%202026-07-14%20at%2009.39.22.jpeg?alt=media&token=1cb4f833-82f4-477b-95ba-b517cab5de64",
+
+
+
+]
+},
+
+{
+nome:"Bianor Construções",
+lat:-3.4015061,
+lng:-44.3553978,
+desconto:"5% a 10% de Desconto",
+condicoes:"• Válido nos seguintes setores  \n- materiais em geral \n- material elétrico, pintura e automotivo  \n• Descontos variam conforme o produto \n• Pagamentos à vista",
+descricao:"Loja especializada em materiais de construção, oferecendo produtos para obras, reformas e acabamentos, com qualidade, variedade e atendimento especializado.",
+categoria:"construção",
+imagens:[
+  "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/costru%C3%A7ao%2Fbianor%20materiais%2FWhatsApp%20Image%202026-07-14%20at%2010.12.15.jpeg?alt=media&token=da35fa1c-44c5-430a-9815-93526be3b88e",
+  "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/costru%C3%A7ao%2Fbianor%20materiais%2FWhatsApp%20Image%202026-07-14%20at%2010.12.16%20(1).jpeg?alt=media&token=70808bf6-0551-4b38-b76b-f3e9b2938ac8",
+  "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/costru%C3%A7ao%2Fbianor%20materiais%2FWhatsApp%20Image%202026-07-14%20at%2010.12.16%20(2).jpeg?alt=media&token=6e4e9eef-ff80-4625-83ab-4a3476bb8106",
+  "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/costru%C3%A7ao%2Fbianor%20materiais%2FWhatsApp%20Image%202026-07-14%20at%2010.12.16%20(3).jpeg?alt=media&token=60a758eb-7d58-4f6c-8ac9-c2172bbed3a6",
+  "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/costru%C3%A7ao%2Fbianor%20materiais%2FWhatsApp%20Image%202026-07-14%20at%2010.12.16%20(4).jpeg?alt=media&token=37552f71-0250-4bf3-8a8a-3708bb79c5ed",
+  "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/costru%C3%A7ao%2Fbianor%20materiais%2FWhatsApp%20Image%202026-07-14%20at%2010.12.16%20(5).jpeg?alt=media&token=09de7c5b-ede2-4b4e-8355-448662f03a9e",
+  "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/costru%C3%A7ao%2Fbianor%20materiais%2FWhatsApp%20Image%202026-07-14%20at%2010.12.16.jpeg?alt=media&token=43396153-6529-4de7-bb00-d6fba8fe1b9b",
+  "https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/costru%C3%A7ao%2Fbianor%20materiais%2FWhatsApp%20Image%202026-07-14%20at%2010.12.17.jpeg?alt=media&token=5cec4200-fea1-46bc-b785-e16a7bae24bf",
 
 ]
 },
