@@ -281,7 +281,7 @@ imagens:[
 
 
 {
-nome:"Ótica do trabalhador",
+nome:"Ótica do Trabalhador",
 lat:-3.3938013,
 lng:-44.3605644,
 desconto:"30% de Desconto",
@@ -322,8 +322,43 @@ imagens:[
 },
 
 
+{
+nome:"JJ Centro Automotivo",
+lat:-3.4037358,
+lng:-44.3538401,
+desconto:"20% de Desconto",
+condicoes:"• Válido para todas as peças em geral \n• 5% de Desconto em pagamentos pacelados  \n• Pagamentos à vista",
+descricao:"Especializada em manutenção automotiva, com ampla variedade de peças e serviços para garantir mais qualidade, segurança e economia na manutenção do seu veículo.",
+categoria:"oficina",
+imagens:[
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oficina%2Fjj%20centro%20automotivo%2FWhatsApp%20Image%202026-07-19%20at%2015.15.03.jpeg?alt=media&token=11ba7054-c539-4b5a-94f6-b86b992a251e",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oficina%2Fjj%20centro%20automotivo%2FWhatsApp%20Image%202026-07-19%20at%2015.15.03%20(2).jpeg?alt=media&token=5b49623a-3f12-4e63-bde7-61bc34d0d6d4",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/oficina%2Fjj%20centro%20automotivo%2FWhatsApp%20Image%202026-07-19%20at%2015.15.03%20(1).jpeg?alt=media&token=65564d4c-1a60-4bf9-8b03-395f88852adf",
 
 
+]
+},
+
+{
+nome:"Academia da Val",
+lat:-3.3925563,
+lng: -44.3577243,
+desconto:"5% a 10% de Desconto",
+condicoes:"• Desconto de 7% na mensalidade.\n• 5% a 10% de desconto no estabelecimento  \n• Pagamentos à vista", 
+descricao:"Academia especializada em saúde, bem-estar e qualidade de vida, oferecendo estrutura completa para quem busca melhorar o condicionamento físico e alcançar seus objetivos.",
+categoria:"academia",
+imagens:[
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/academia%2Facademia%20da%20val%2FWhatsApp%20Image%202026-07-19%20at%2015.43.42.jpeg?alt=media&token=bb3595b2-0870-48fb-86bb-32a1a9586c48",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/academia%2Facademia%20da%20val%2FWhatsApp%20Image%202026-07-19%20at%2015.43.27.jpeg?alt=media&token=f4aa552b-8631-448e-a71a-573dd77b69b5",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/academia%2Facademia%20da%20val%2FWhatsApp%20Image%202026-07-19%20at%2015.43.27%20(2).jpeg?alt=media&token=8bf75c1c-f088-4a4c-a6bc-7fc720039513",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/academia%2Facademia%20da%20val%2FWhatsApp%20Image%202026-07-19%20at%2015.43.27%20(1).jpeg?alt=media&token=2b6508aa-a92c-4e12-b86b-060dc7012cc7",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/academia%2Facademia%20da%20val%2FWhatsApp%20Image%202026-07-19%20at%2015.43.26.jpeg?alt=media&token=5792249e-9130-411a-9437-15ba8d54454e",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/academia%2Facademia%20da%20val%2FWhatsApp%20Image%202026-07-19%20at%2015.43.26%20(2).jpeg?alt=media&token=7f4538b6-990f-43cf-87c2-772277cb6374",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/academia%2Facademia%20da%20val%2FWhatsApp%20Image%202026-07-19%20at%2015.43.26%20(1).jpeg?alt=media&token=53b8dda4-7e3d-4071-a8c2-a93a4eb5c8de",
+
+
+]
+},
 
 
 ];
@@ -422,6 +457,8 @@ function renderMarkers(lista){
     agropecuaria: { bg1:"#86efac", bg2:"#15803d", borda:"#14532d" },
     gráfica:      { bg1:"#f87171", bg2:"#dc2626", borda:"#7f1d1d" },
     ótica:        { bg1:"#38bdf8", bg2:"#0284c7", borda:"#0c4a6e" },
+    academia:     { bg1:"#0284c7", bg2:"#0284c7", borda:"#0c4a6e" },
+
   };
 
   const padrao = { bg1:"#fde68a", bg2:"#b8860b", borda:"#7a5800" };
@@ -474,6 +511,15 @@ function renderMarkers(lista){
         <line x1="17.5" y1="17" x2="18.5" y2="17" stroke="#fff" stroke-width="1.8"/>
         <line x1="8.5"  y1="14" x2="8"    y2="12" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
         <line x1="27.5" y1="14" x2="28"   y2="12" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>`,
+
+
+        academia: `
+        <rect x="7"  y="14" width="4" height="8" rx="1" fill="#fff"/>
+        <rect x="25" y="14" width="4" height="8" rx="1" fill="#fff"/>
+        <rect x="9"  y="12" width="2.5" height="12" rx="1" fill="#fff"/>
+        <rect x="24.5" y="12" width="2.5" height="12" rx="1" fill="#fff"/>
+        <rect x="11.5" y="16.5" width="13" height="3" rx="1.5" fill="#fff"/>`,
+
     };
 
     const icone = simbolos[categoria] || `
