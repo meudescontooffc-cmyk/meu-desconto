@@ -359,7 +359,43 @@ imagens:[
 
 ]
 },
+{
+nome:"Morais Celulares",
+lat:-3.3991165,
+lng:-44.3523260,
+desconto:" 5% a 20% de Desconto",
+condicoes:"• válido para acessórios e serviços \n• Pagamentos à vista",
+descricao:"Loja especializada em aparelhos celulares, acessórios e serviços de assistência técnica.",
+categoria:"tecnologia",
+imagens:[
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/tegnologia%2Fmorais%20de%20celular%2FWhatsApp%20Image%202026-07-30%20at%2007.28.17.jpeg?alt=media&token=385c0a75-df51-4256-a853-04287c319bc7",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/tegnologia%2Fmorais%20de%20celular%2FWhatsApp%20Image%202026-07-30%20at%2007.28.17%20(1).jpeg?alt=media&token=f7540a0b-12ae-4ba4-84e9-1444d25b95e1",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/tegnologia%2Fmorais%20de%20celular%2FWhatsApp%20Image%202026-07-30%20at%2007.28.18%20(1).jpeg?alt=media&token=a2cdb801-b19d-4170-bba7-69a5a6c6dc7b",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/tegnologia%2Fmorais%20de%20celular%2FWhatsApp%20Image%202026-07-30%20at%2007.28.18%20(2).jpeg?alt=media&token=8a64d4c6-a35b-4e71-bff2-3af363d78c6f",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/tegnologia%2Fmorais%20de%20celular%2FWhatsApp%20Image%202026-07-30%20at%2007.28.18.jpeg?alt=media&token=98a4f3d6-634a-48dd-bd4b-69972bb7a9d4",
+]
+},
+{
+nome:"Tudo de Farmácia",
+lat:-3.3960705,
+lng:-44.3583227,
+desconto:"15% de Desconto",
+condicoes:"• Pagamentos à vista",
+descricao:"Farmácia com ampla variedade de medicamentos e atendimento rápido.",
+categoria:"farmacia",
+imagens:[
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/farmacias%2Ftudo%20de%20farmacia%2FWhatsApp%20Image%202026-07-30%20at%2007.48.07.jpeg?alt=media&token=857df262-4d19-4bc3-af23-17de3598a715",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/farmacias%2Ftudo%20de%20farmacia%2FWhatsApp%20Image%202026-07-30%20at%2007.48.07%20(1).jpeg?alt=media&token=cf1ae6de-e91d-49ae-8c21-5b7bf5af94dd",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/farmacias%2Ftudo%20de%20farmacia%2FWhatsApp%20Image%202026-07-30%20at%2007.48.07%20(2).jpeg?alt=media&token=db260eb1-8c31-404b-b8ba-e95678317048",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/farmacias%2Ftudo%20de%20farmacia%2FWhatsApp%20Image%202026-07-30%20at%2007.48.07%20(3).jpeg?alt=media&token=9bc840c4-7143-436a-a357-ee5c16dc3972",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/farmacias%2Ftudo%20de%20farmacia%2FWhatsApp%20Image%202026-07-30%20at%2007.48.08%20(1).jpeg?alt=media&token=11d8c3cb-2a86-4c27-860a-799012bdef03",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/farmacias%2Ftudo%20de%20farmacia%2FWhatsApp%20Image%202026-07-30%20at%2007.48.08%20(2).jpeg?alt=media&token=3642588e-bb78-4102-8296-60ffc90e1633",
+"https://firebasestorage.googleapis.com/v0/b/meu-desconto-6ecd2.firebasestorage.app/o/farmacias%2Ftudo%20de%20farmacia%2FWhatsApp%20Image%202026-07-30%20at%2007.48.08.jpeg?alt=media&token=b498cf5f-9a19-4e0f-a76c-b493356caa00",
 
+
+
+]
+},
 
 ];
 
